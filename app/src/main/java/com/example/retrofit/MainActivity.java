@@ -1,12 +1,15 @@
 package com.example.retrofit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView profileImg;
     TextView profileNickText;
     TextView profileIdText;
+    RecyclerView recyclerView;
+    private UserAndRepositoryAdapter userAndRepositoryAdapter;
+    Githubuser user;
+    List<GithubRepository> repos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         profileImg = findViewById(R.id.profileImg);
         profileIdText = findViewById(R.id.profileIdText);
         profileNickText = findViewById(R.id.profileNickText);
+        userAndRepositoryAdapter = new UserAndRepositoryAdapter();
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(userAndRepositoryAdapter);
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.github.com/")
@@ -38,19 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
         Call<Githubuser> userCall = service.getUser("04pys");
 
+
         userCall.enqueue(new Callback<Githubuser>() {
             @Override
             public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
                 Githubuser user = response.body();
-                profileIdText.setText(user.login);
-                profileNickText.setText(user.name);
+                MainActivity.this.user = user;
 
-                Glide
-                        .with(MainActivity.this)
-                        .load(user.avatar_url)
-           //             .centerCrop()
-                    //    .placeholder(R.drawable.loading_spinner)
-                        .into(profileImg);
+                if(MainActivity.this.repos != null){
+                    List<Object> itemList = new ArrayList<>();
+                    itemList.add(user);
+                    itemList.addAll(repos);
+
+                    userAndRepositoryAdapter.submitList(itemList);
+                }
+
             }
 
             @Override
@@ -58,6 +72,28 @@ public class MainActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+        Call<List<GithubRepository>> reposCall = service.getUserRepos("04pys");
+        reposCall.enqueue(new Callback<List<GithubRepository>>() {
+            @Override
+            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
+                if(response.isSuccessful()){
+                    List<GithubRepository> repos = response.body();
+                    MainActivity.this.repos = repos;
+                    if(MainActivity.this.user != null){
+                        List<Object> itemList = new ArrayList<>();
+                        itemList.add(user);
+                        itemList.addAll(repos);
 
+                        userAndRepositoryAdapter.submitList(itemList);
+                    }
+                   // repositoryAdapter.submitList(repos);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 }
