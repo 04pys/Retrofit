@@ -51,6 +51,7 @@ public class UserAndRepositoryDiffUtil extends DiffUtil.ItemCallback<Object> {
             GithubRepository oldRepo = (GithubRepository) oldItem;
             GithubRepository newRepo = (GithubRepository) newItem;
 
+            //이 부분에서 오류가 발생하는것 같은데 해결하지 못하였습니다,,
             return oldRepo.htmlURL.equals(newRepo.htmlURL)
                     && oldRepo.description.equals(newRepo.description)
                     && oldRepo.name.equals(newRepo.name);
