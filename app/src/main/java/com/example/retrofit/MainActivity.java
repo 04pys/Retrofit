@@ -105,144 +105,144 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //JMJ
-//        Call<Githubuser> userCallJMJ = service.getUser("polaris428");
-//        userCallJMJ.enqueue(new Callback<Githubuser>() {
-//            @Override
-//            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
-//                Githubuser user = response.body();
-//                MainActivity.this.userJMJ = user;
-//
-//                if(MainActivity.this.reposJMJ != null){
-//                    List<Object> itemList = new ArrayList<>();
-//                    itemList.add(user);
-//                    itemList.addAll(reposJMJ);
-//
-//                    userAndRepositoryAdapter.submitList(itemList);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Githubuser> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
-//        Call<List<GithubRepository>> reposCallJMJ = service.getUserRepos("polaris428");
-//        reposCallJMJ.enqueue(new Callback<List<GithubRepository>>() {
-//            @Override
-//            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
-//                if(response.isSuccessful()){
-//                    List<GithubRepository> repos = response.body();
-//                    MainActivity.this.reposJMJ = repos;
-//                    if(MainActivity.this.userJMJ != null){
-//                        List<Object> itemList = new ArrayList<>();
-//                        itemList.add(userJMJ);
-//                        itemList.addAll(repos);
-//
-//                        userAndRepositoryAdapter.submitList(itemList);
-//                    }
-//                    // repositoryAdapter.submitList(repos);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
-//
-//        //OIS
-//        Call<Githubuser> userCallOIS = service.getUser("inseong04");
-//        userCallOIS.enqueue(new Callback<Githubuser>() {
-//            @Override
-//            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
-//                Githubuser user = response.body();
-//                MainActivity.this.userOIS = user;
-//
-//                if(MainActivity.this.reposOIS != null){
-//                    List<Object> itemList = new ArrayList<>();
-//                    itemList.add(user);
-//                    itemList.addAll(reposOIS);
-//
-//                    userAndRepositoryAdapter.submitList(itemList);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Githubuser> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
-//        Call<List<GithubRepository>> reposCallOIS = service.getUserRepos("polaris428");
-//        reposCallOIS.enqueue(new Callback<List<GithubRepository>>() {
-//            @Override
-//            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
-//                if(response.isSuccessful()){
-//                    List<GithubRepository> repos = response.body();
-//                    MainActivity.this.reposOIS = repos;
-//                    if(MainActivity.this.userOIS != null){
-//                        List<Object> itemList = new ArrayList<>();
-//                        itemList.add(userOIS);
-//                        itemList.addAll(repos);
-//
-//                        userAndRepositoryAdapter.submitList(itemList);
-//                    }
-//                    // repositoryAdapter.submitList(repos);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
-//        //LJS
-//        Call<Githubuser> userCallLJS = service.getUser("samgashyeong");
-//        userCallLJS.enqueue(new Callback<Githubuser>() {
-//            @Override
-//            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
-//                Githubuser user = response.body();
-//                MainActivity.this.userLJS = user;
-//
-//                if(MainActivity.this.reposLJS != null){
-//                    List<Object> itemList = new ArrayList<>();
-//                    itemList.add(user);
-//                    itemList.addAll(reposLJS);
-//
-//                    userAndRepositoryAdapter.submitList(itemList);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Githubuser> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
-//        Call<List<GithubRepository>> reposCallLJS = service.getUserRepos("polaris428");
-//        reposCallLJS.enqueue(new Callback<List<GithubRepository>>() {
-//            @Override
-//            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
-//                if(response.isSuccessful()){
-//                    List<GithubRepository> repos = response.body();
-//                    MainActivity.this.reposLJS = repos;
-//                    if(MainActivity.this.userLJS != null){
-//                        List<Object> itemList = new ArrayList<>();
-//                        itemList.add(userLJS);
-//                        itemList.addAll(repos);
-//
-//                        userAndRepositoryAdapter.submitList(itemList);
-//                    }
-//                    // repositoryAdapter.submitList(repos);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
+        Call<Githubuser> userCallJMJ = service.getUser("polaris428");
+        userCallJMJ.enqueue(new Callback<Githubuser>() {
+            @Override
+            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
+                Githubuser user = response.body();
+                MainActivity.this.userJMJ = user;
+
+                if(MainActivity.this.reposJMJ != null){
+                    List<Object> itemList = new ArrayList<>();
+                    itemList.add(user);
+                    itemList.addAll(reposJMJ);
+
+                    userAndRepositoryAdapter.submitList(itemList);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Githubuser> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+        Call<List<GithubRepository>> reposCallJMJ = service.getUserRepos("polaris428");
+        reposCallJMJ.enqueue(new Callback<List<GithubRepository>>() {
+            @Override
+            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
+                if(response.isSuccessful()){
+                    List<GithubRepository> repos = response.body();
+                    MainActivity.this.reposJMJ = repos;
+                    if(MainActivity.this.userJMJ != null){
+                        List<Object> itemList = new ArrayList<>();
+                        itemList.add(userJMJ);
+                        itemList.addAll(repos);
+
+                        userAndRepositoryAdapter.submitList(itemList);
+                    }
+                    // repositoryAdapter.submitList(repos);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+        //OIS
+        Call<Githubuser> userCallOIS = service.getUser("inseong04");
+        userCallOIS.enqueue(new Callback<Githubuser>() {
+            @Override
+            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
+                Githubuser user = response.body();
+                MainActivity.this.userOIS = user;
+
+                if(MainActivity.this.reposOIS != null){
+                    List<Object> itemList = new ArrayList<>();
+                    itemList.add(user);
+                    itemList.addAll(reposOIS);
+
+                    userAndRepositoryAdapter.submitList(itemList);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Githubuser> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+        Call<List<GithubRepository>> reposCallOIS = service.getUserRepos("polaris428");
+        reposCallOIS.enqueue(new Callback<List<GithubRepository>>() {
+            @Override
+            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
+                if(response.isSuccessful()){
+                    List<GithubRepository> repos = response.body();
+                    MainActivity.this.reposOIS = repos;
+                    if(MainActivity.this.userOIS != null){
+                        List<Object> itemList = new ArrayList<>();
+                        itemList.add(userOIS);
+                        itemList.addAll(repos);
+
+                        userAndRepositoryAdapter.submitList(itemList);
+                    }
+                    // repositoryAdapter.submitList(repos);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+        //LJS
+        Call<Githubuser> userCallLJS = service.getUser("samgashyeong");
+        userCallLJS.enqueue(new Callback<Githubuser>() {
+            @Override
+            public void onResponse(Call<Githubuser> call, Response<Githubuser> response) {
+                Githubuser user = response.body();
+                MainActivity.this.userLJS = user;
+
+                if(MainActivity.this.reposLJS != null){
+                    List<Object> itemList = new ArrayList<>();
+                    itemList.add(user);
+                    itemList.addAll(reposLJS);
+
+                    userAndRepositoryAdapter.submitList(itemList);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Githubuser> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+        Call<List<GithubRepository>> reposCallLJS = service.getUserRepos("polaris428");
+        reposCallLJS.enqueue(new Callback<List<GithubRepository>>() {
+            @Override
+            public void onResponse(Call<List<GithubRepository>> call, Response<List<GithubRepository>> response) {
+                if(response.isSuccessful()){
+                    List<GithubRepository> repos = response.body();
+                    MainActivity.this.reposLJS = repos;
+                    if(MainActivity.this.userLJS != null){
+                        List<Object> itemList = new ArrayList<>();
+                        itemList.add(userLJS);
+                        itemList.addAll(repos);
+
+                        userAndRepositoryAdapter.submitList(itemList);
+                    }
+                    // repositoryAdapter.submitList(repos);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GithubRepository>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
     }
 }
